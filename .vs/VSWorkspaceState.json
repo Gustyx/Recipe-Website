@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\meal",
+    "\\src\\app\\meal-dialog",
+    "\\src\\app\\Model",
+    "\\src\\app\\Service"
+  ],
+  "SelectedNode": "\\src\\app\\meal-dialog\\meal-dialog.component.html",
+  "PreviewInSolutionExplorer": false
+}
