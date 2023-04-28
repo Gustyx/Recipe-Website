@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="large-toolbar">
+<mat-toolbar color="warn" class="large-toolbar">
   <mat-icon style="font-size: 24px; margin: 12px">restaurant_menu</mat-icon>
   <span style="font-size: 24px">Recipe Manager</span>
 </mat-toolbar>
@@ -8,7 +8,7 @@
     <div class="container-wrapper">
 
       <div class="container">
-        <button (click)="newMeal()" mat-raised-button color="primary">
+        <button (click)="newMeal()" mat-raised-button color="warn">
           <mat-icon>add</mat-icon> Add Meal
         </button>
         <h2>New recipes</h2>
@@ -20,8 +20,8 @@
                   [cdkDropListConnectedTo]="[breakfastList, lunchList, dinnerList]"
                   (cdkDropListDropped)="drop($event)"
                   class="list">
-          <p class="empty-label" *ngIf="new.length === 0">Empty list</p>
-          <mat-expansion-panel hideToggle="true" (edit)="editMeal('new', meal)" *ngFor="let meal of new" cdkDrag>
+          <p class="empty-label" *ngIf="new.length === 0">No Meals</p>
+          <mat-expansion-panel hideToggle="true" style="border-radius: 40px" (edit)="editMeal('new', meal)" *ngFor="let meal of new" cdkDrag>
             <mat-expansion-panel-header (click)="stopHeaderClick($event)">
               <mat-panel-title (click)="stopHeaderClick($event)">
                 {{meal.title}}
@@ -31,7 +31,7 @@
               </button>
             </mat-expansion-panel-header>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewIngredientList=!this.viewIngredientList">
+              <button mat-raised-button color="warn" (click)="this.viewIngredientList=!this.viewIngredientList">
                 View Ingredients
               </button>
             </section>
@@ -39,7 +39,7 @@
               <mat-list-item role="listitem" *ngFor="let ingredient of meal.ingredientList">{{ingredient}}</mat-list-item>
             </mat-list>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewDescription=!this.viewDescription">
+              <button mat-raised-button color="warn" (click)="this.viewDescription=!this.viewDescription">
                 View Description
               </button>
             </section>
@@ -49,7 +49,7 @@
       </div>
 
       <div class="container">
-        <button (click)="getBreakfast()" mat-raised-button color="primary">
+        <button (click)="getBreakfast()" mat-raised-button color="warn">
           <mat-icon>visibility</mat-icon> Get All Breakfasts
         </button>
         <h2>Breakfast</h2>
@@ -61,9 +61,9 @@
                   [cdkDropListConnectedTo]="[newList, lunchList, dinnerList]"
                   (cdkDropListDropped)="drop($event)"
                   class="list">
-          <p class="empty-label" *ngIf="breakfast.length === 0">Empty list</p>
+          <p class="empty-label" *ngIf="breakfast.length === 0 && breakfastFromDB.length === 0">No Meals</p>
 
-          <mat-expansion-panel hideToggle="true" (edit)="editMeal('breakfast', meal)" *ngFor="let meal of breakfast" cdkDrag>
+          <mat-expansion-panel hideToggle="true" style="border-radius: 40px" (edit)="editMeal('breakfast', meal)" *ngFor="let meal of breakfast" cdkDrag>
             <mat-expansion-panel-header (click)="stopHeaderClick($event)">
               <mat-panel-title (click)="stopHeaderClick($event)">
                 {{meal.title}}
@@ -73,7 +73,7 @@
               </button>
             </mat-expansion-panel-header>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewIngredientList=!this.viewIngredientList">
+              <button mat-raised-button color="warn" (click)="this.viewIngredientList=!this.viewIngredientList">
                 View Ingredients
               </button>
             </section>
@@ -81,14 +81,14 @@
               <mat-list-item role="listitem" *ngFor="let ingredient of meal.ingredientList">{{ingredient}}</mat-list-item>
             </mat-list>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewDescription=!this.viewDescription">
+              <button mat-raised-button color="warn" (click)="this.viewDescription=!this.viewDescription">
                 View Description
               </button>
             </section>
             <p *ngIf="this.viewDescription">{{meal.description}}</p>
           </mat-expansion-panel>
 
-          <mat-expansion-panel hideToggle="true" *ngFor="let meal of breakfastFromDB" cdkDrag>
+          <mat-expansion-panel hideToggle="true" style="border-radius: 40px" *ngFor="let meal of breakfastFromDB" cdkDrag>
             <mat-expansion-panel-header (click)="stopHeaderClick($event)">
               <mat-panel-title (click)="stopHeaderClick($event)">
                 {{meal.title}}
@@ -98,7 +98,7 @@
               </button>
             </mat-expansion-panel-header>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewIngredientList=!this.viewIngredientList">
+              <button mat-raised-button color="warn" (click)="this.viewIngredientList=!this.viewIngredientList">
                 View Ingredients
               </button>
             </section>
@@ -106,7 +106,7 @@
               <mat-list-item role="listitem" *ngFor="let ingredient of meal.ingredientList">{{ingredient}}</mat-list-item>
             </mat-list>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewDescription=!this.viewDescription">
+              <button mat-raised-button color="warn" (click)="this.viewDescription=!this.viewDescription">
                 View Description
               </button>
             </section>
@@ -118,7 +118,7 @@
       </div>
 
       <div class="container">
-        <button (click)="getLunch()" mat-raised-button color="primary">
+        <button (click)="getLunch()" mat-raised-button color="warn">
           <mat-icon>visibility</mat-icon> Get All Lunchs
         </button>
         <h2>Lunch</h2>
@@ -130,9 +130,9 @@
                   [cdkDropListConnectedTo]="[newList, breakfastList, dinnerList]"
                   (cdkDropListDropped)="drop($event)"
                   class="list">
-          <p class="empty-label" *ngIf="lunch.length === 0">Empty list</p>
+          <p class="empty-label" *ngIf="lunch.length === 0 && lunchFromDB.length === 0">No Meals</p>
 
-          <mat-expansion-panel hideToggle="true" (edit)="editMeal('lunch', meal)" *ngFor="let meal of lunch" cdkDrag>
+          <mat-expansion-panel hideToggle="true" style="border-radius: 40px" (edit)="editMeal('lunch', meal)" *ngFor="let meal of lunch" cdkDrag>
             <mat-expansion-panel-header (click)="stopHeaderClick($event)">
               <mat-panel-title (click)="stopHeaderClick($event)">
                 {{meal.title}}
@@ -142,7 +142,7 @@
               </button>
             </mat-expansion-panel-header>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewIngredientList=!this.viewIngredientList">
+              <button mat-raised-button color="warn" (click)="this.viewIngredientList=!this.viewIngredientList">
                 View Ingredients
               </button>
             </section>
@@ -150,14 +150,14 @@
               <mat-list-item role="listitem" *ngFor="let ingredient of meal.ingredientList">{{ingredient}}</mat-list-item>
             </mat-list>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewDescription=!this.viewDescription">
+              <button mat-raised-button color="warn" (click)="this.viewDescription=!this.viewDescription">
                 View Description
               </button>
             </section>
             <p *ngIf="this.viewDescription">{{meal.description}}</p>
           </mat-expansion-panel>
 
-          <mat-expansion-panel hideToggle="true" *ngFor="let meal of lunchFromDB" cdkDrag>
+          <mat-expansion-panel hideToggle="true" style="border-radius: 40px" *ngFor="let meal of lunchFromDB" cdkDrag>
             <mat-expansion-panel-header (click)="stopHeaderClick($event)">
               <mat-panel-title (click)="stopHeaderClick($event)">
                 {{meal.title}}
@@ -167,7 +167,7 @@
               </button>
             </mat-expansion-panel-header>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewIngredientList=!this.viewIngredientList">
+              <button mat-raised-button color="warn" (click)="this.viewIngredientList=!this.viewIngredientList">
                 View Ingredients
               </button>
             </section>
@@ -175,7 +175,7 @@
               <mat-list-item role="listitem" *ngFor="let ingredient of meal.ingredientList">{{ingredient}}</mat-list-item>
             </mat-list>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewDescription=!this.viewDescription">
+              <button mat-raised-button color="warn" (click)="this.viewDescription=!this.viewDescription">
                 View Description
               </button>
             </section>
@@ -186,7 +186,7 @@
       </div>
 
       <div class="container">
-        <button (click)="getDinner()" mat-raised-button color="primary">
+        <button (click)="getDinner()" mat-raised-button color="warn">
           <mat-icon>visibility</mat-icon> Get All Dinners
         </button>
         <h2>Dinner</h2>
@@ -198,8 +198,8 @@
                   [cdkDropListConnectedTo]="[newList, breakfastList, lunchList]"
                   (cdkDropListDropped)="drop($event)"
                   class="list">
-          <p class="empty-label" *ngIf="dinner.length === 0">Empty list</p>
-          <mat-expansion-panel hideToggle="true" (edit)="editMeal('dinner', meal)" *ngFor="let meal of dinner" cdkDrag>
+          <p class="empty-label" *ngIf="dinner.length === 0 && dinnerFromDB.length === 0">No Meals</p>
+          <mat-expansion-panel hideToggle="true" style="border-radius: 40px" (edit)="editMeal('dinner', meal)" *ngFor="let meal of dinner" cdkDrag>
             <mat-expansion-panel-header (click)="stopHeaderClick($event)">
               <mat-panel-title (click)="stopHeaderClick($event)">
                 {{meal.title}}
@@ -209,7 +209,7 @@
               </button>
             </mat-expansion-panel-header>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewIngredientList=!this.viewIngredientList">
+              <button mat-raised-button color="warn" (click)="this.viewIngredientList=!this.viewIngredientList">
                 View Ingredients
               </button>
             </section>
@@ -217,14 +217,14 @@
               <mat-list-item role="listitem" *ngFor="let ingredient of meal.ingredientList">{{ingredient}}</mat-list-item>
             </mat-list>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewDescription=!this.viewDescription">
+              <button mat-raised-button color="warn" (click)="this.viewDescription=!this.viewDescription">
                 View Description
               </button>
             </section>
             <p *ngIf="this.viewDescription">{{meal.description}}</p>
           </mat-expansion-panel>
 
-          <mat-expansion-panel hideToggle="true" *ngFor="let meal of dinnerFromDB" cdkDrag>
+          <mat-expansion-panel hideToggle="true" style="border-radius: 40px" *ngFor="let meal of dinnerFromDB" cdkDrag>
             <mat-expansion-panel-header (click)="stopHeaderClick($event)">
               <mat-panel-title (click)="stopHeaderClick($event)">
                 {{meal.title}}
@@ -234,7 +234,7 @@
               </button>
             </mat-expansion-panel-header>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewIngredientList=!this.viewIngredientList">
+              <button mat-raised-button color="warn" (click)="this.viewIngredientList=!this.viewIngredientList">
                 View Ingredients
               </button>
             </section>
@@ -242,7 +242,7 @@
               <mat-list-item role="listitem" *ngFor="let ingredient of meal.ingredientList">{{ingredient}}</mat-list-item>
             </mat-list>
             <section style="padding:5px">
-              <button mat-raised-button color="primary" (click)="this.viewDescription=!this.viewDescription">
+              <button mat-raised-button color="warn" (click)="this.viewDescription=!this.viewDescription">
                 View Description
               </button>
             </section>

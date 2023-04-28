@@ -3,7 +3,7 @@
   <input matInput cdkFocusInitial [(ngModel)]="data.meal.title" />
 </mat-form-field>
 
-<button (click)="this.ingredientOptions=true" mat-raised-button color="primary" style="margin: 10px">
+<button (click)="this.ingredientOptions=true" mat-raised-button color="warn" style="margin: 10px">
   <mat-icon>add</mat-icon> New Ingredient
 </button>
 
@@ -25,7 +25,7 @@
       <mat-option value="cups">cups</mat-option>
     </mat-select>
   </mat-form-field>
-  <button (click)="addedIngredient()" *ngIf="this.ingredientOptions===true" mat-raised-button color="primary" style="margin: 10px">
+  <button (click)="addedIngredient()" *ngIf="this.ingredientOptions===true" mat-raised-button color="warn" style="margin: 10px">
     <mat-icon>add</mat-icon> Add Ingredient
   </button>
 </div>
@@ -47,7 +47,7 @@
   <button mat-button (click)="cancel()">Cancel</button>
   <button *ngIf="data.enableDelete"
           mat-fab
-          color="primary"
+          color="warn"
           aria-label="Delete"
           [mat-dialog-close]="{ meal: data.meal, delete: true }">
     <mat-icon>delete</mat-icon>
