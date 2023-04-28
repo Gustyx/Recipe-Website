@@ -1,0 +1,55 @@
+<mat-form-field style="margin: 10px; width: 360px">
+  <mat-label>Title</mat-label>
+  <input matInput cdkFocusInitial [(ngModel)]="data.meal.title" />
+</mat-form-field>
+
+<button (click)="this.ingredientOptions=true" mat-raised-button color="primary" style="margin: 10px">
+  <mat-icon>add</mat-icon> New Ingredient
+</button>
+
+<div class="container">
+  <mat-form-field *ngIf="this.ingredientOptions===true" style="margin: 10px; width: 360px">
+    <mat-label>Name</mat-label>
+    <input matInput type="text" [(ngModel)]="inputName">
+  </mat-form-field>
+  <mat-form-field *ngIf="this.ingredientOptions===true" style="margin: 10px; width: 360px">
+    <mat-label>Quantity</mat-label>
+    <input matInput type="text" [(ngModel)]="inputQuantity">
+  </mat-form-field>
+  <mat-form-field *ngIf="this.ingredientOptions===true" style="margin: 10px; width: 360px">
+    <mat-label>Measure</mat-label>
+    <mat-select [(ngModel)]="inputMeasure">
+      <mat-option value="g">g</mat-option>
+      <mat-option value="ml">ml</mat-option>
+      <mat-option value="lbs">lbs</mat-option>
+      <mat-option value="cups">cups</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button (click)="addedIngredient()" *ngIf="this.ingredientOptions===true" mat-raised-button color="primary" style="margin: 10px">
+    <mat-icon>add</mat-icon> Add Ingredient
+  </button>
+</div>
+<mat-card style="background-color: #eeeeee; height: 24px; width: 240px">
+  <mat-card-content style="display: flex; align-items: center; height: 100%; padding: 0; margin-inline-start: 10px;">
+    Ingredients
+  </mat-card-content></mat-card>
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let ingredient of ingredientNames">{{ingredient}}</mat-list-item>
+</mat-list>
+
+<mat-form-field style="margin: 10px; width: 360px">
+  <mat-label>Description</mat-label>
+  <textarea matInput [(ngModel)]="data.meal.description"></textarea>
+</mat-form-field>
+
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="{ meal: data.meal }">OK</button>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button *ngIf="data.enableDelete"
+          mat-fab
+          color="primary"
+          aria-label="Delete"
+          [mat-dialog-close]="{ meal: data.meal, delete: true }">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
